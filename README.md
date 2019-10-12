@@ -41,7 +41,3 @@ I spent about 2.5 hours on this project, most of which was spent on the scraping
 - Overall project improvements
   - It would be nice to work out a deployement/testing/release workflow. Currently, system dependancies are not reproducible at all. I have not done a lot of dev ops work, but containerizing in some form or another (hopefully in a way that is consistent with how the rest of the org does things) would offer some safety gains there
   - If this were a real project, I would want to see some form of automatic testing upon PR creation with Circle or Travis or something of the like
-  
-  
-  
-- 
