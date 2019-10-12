@@ -34,7 +34,7 @@ class MovieListingIndex:
             self.ingest_movie_listing(listing)
 
     def search_movie_listings(self, search_str):
-        search_terms = search_str.split()
+        search_terms = search_str.lower().split()
         if len(search_terms) == 0:
             return []
 
