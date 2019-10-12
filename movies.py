@@ -2,6 +2,20 @@ from collections import namedtuple
 
 # Type used to represent a movie listing
 MovieListing = namedtuple('MovieListing', ['title', 'cast', 'crew'])
+class MovieListing:
+        """Simple class to represent a listed IMDB movie and it's associated data"""
+        def __init__(self, imdb_url, title, cast, crew):
+                self.imdb_url = imdb_url
+                self.title = title
+                self.cast = cast
+                self.crew = crew
+
+        def __hash__(self):
+                return self.imdb_url.__hash__()
+
+        def __eq__(self, other):
+                return self.imdb_url == other.imdb_url
+            
 
 class MovieListingIndex:
     """Simple class to represent a search index of movie listings"""
@@ -20,13 +34,13 @@ class MovieListingIndex:
             self.ingest_movie_listing(listing)
 
     def search_movie_listings(self, search_str):
-        search_terms = search_str.split():
+        search_terms = search_str.split()
         if len(search_terms) == 0:
             return []
 
-        results = self.index.get(search_terms[i], set())
+        results = self.index.get(search_terms[0], set())
         for term in search_terms[1:]:
-            results_for_term = self.index.get(search_terms[i], set())
+            results_for_term = self.index.get(term, set())
 
             # this always does a logical "and" for search terms. This
             # is a pretty major simplification

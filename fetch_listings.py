@@ -45,7 +45,7 @@ def get_movie_listing_for_movie_link(link):
     castListRows = castListTable.find_all('tr', attrs={'class': re.compile('even|odd')})
     castList = [row.find_all('td')[1].text.strip() for row in castListRows]
 
-    return MovieListing(titleText, castList, crew)
+    return MovieListing(link, titleText, castList, crew)
 
 def main():
     print("Fetching top 1000 imdb movie links...")
@@ -61,7 +61,7 @@ def main():
 
     print("Done fetching detailed listings\n")
 
-    jsonable_movie_listings = [ml._asdict() for ml in movie_listings]
+    jsonable_movie_listings = [ml.__dict__ for ml in movie_listings]
     with open('top_imdb_movie_listings.json', 'w') as f:
         json.dump(jsonable_movie_listings, f)
    
